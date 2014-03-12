@@ -25,6 +25,7 @@ class CategoriesController < ApplicationController
   # GET /categories/new.json
   def new
     @category = Category.new
+    @category.title = "snipple" if String(@category.title).empty?
 
     respond_to do |format|
       format.html # new.html.erb
