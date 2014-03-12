@@ -1,0 +1,47 @@
+<h1>New category</h1>
+
+<%= render 'form' %>
+
+<h2>The Hunter Wu Form</h2>
+
+<h2>Ideas</h2>
+<ul>
+  <li>You can't get the errors off the non-existent object??</li>
+  <li>in the event of a validation you don't have an errors object?</li>
+</ul>
+
+<pre>
+
+  &lt;%= form_for :category, action: 'categories_path' do |f| %&gt;    
+    &lt;% if @category.errors.any? %&gt;
+      &lt;div id=&quot;error_explanation&quot;&gt;
+        &lt;h2&gt;&lt;%= pluralize(@category.errors.count, &quot;error&quot;) %&gt; prohibited this category from being saved:&lt;/h2&gt;
+        &lt;ul&gt;
+        &lt;% @category.errors.full_messages.each do |msg| %&gt;
+          &lt;li&gt;&lt;%= msg %&gt;&lt;/li&gt;        &lt;% end %&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;    &lt;% end %&gt;
+
+    &lt;div class=&quot;field&quot;&gt;
+      &lt;%= f.label :title %&gt;&lt;br /&gt;
+      &lt;%= f.text_field :title %&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;actions&quot;&gt;
+      &lt;%= f.submit %&gt;
+    &lt;/div&gt;
+  &lt;% end %&gt;
+
+</pre>
+
+<%= form_for :category, url: categories_path do |f| %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', categories_path %>
